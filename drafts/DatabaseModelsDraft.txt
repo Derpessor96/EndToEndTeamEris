@@ -1,0 +1,25 @@
+User:
+username;
+password;
+name;
+role;
+pictureUrl: string;
+
+Offers:
+seller: UserId;
+category: CategoryId;
+title: string;
+pictureUrl: string
+description: string;
+price: number;
+creationDate: Date;
+expirationDate: Date;
+sold: boolean;
+
+Sales:
+offerId: string;
+buyerId: string;
+saleDate: Date;
+
+Categories:
+name: string;
