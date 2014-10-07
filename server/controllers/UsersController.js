@@ -1,17 +1,22 @@
-var users = require('../models/user');
+var User = require('../models/user');
 
 module.exports = {
-    registerUser: function (userModel, callback) {
-        this.findUser({ username: userModel.username}, function (err, res) {
-            if (res && res.length > 0) {
-                callback(err, res);
-            } else {
-                users.create(userModel, callback);
+    registerUser: function (req, res, callback) {
+        var userModel = req.body;
+
+        this.findUser({ username: userModel.username}, function (err, foundUser) {
+            if (err) console.log(err);
+            else {
+                if (foundUser && foundUser.length > 0) {
+                    callback(err, foundUser);
+                } else {
+                    User.create(userModel, callback);
+                }
             }
         });
     },
     findUser: function (username, callback) {
-        users.findOne({ 'username': username }, function (err, res) {
+        User.findOne({ 'username': username }, function (err, res) {
             if (callback) {
                 callback(err, res);
             }

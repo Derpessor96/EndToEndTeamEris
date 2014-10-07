@@ -1,7 +1,11 @@
+var auth = require('./auth')
 module.exports = function(app) {
     app.get('/test', function(req, res) {
         res.render('index');
     });
+
+    app.post('/login', auth.login);
+    app.post('/logout', auth.logout);
 
     /* User-related routes START*/
 
