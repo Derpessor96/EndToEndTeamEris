@@ -1,10 +1,8 @@
+// Add constants here
 var path = require('path');
-var rootPath = path.normalize(__dirname + '/../../')
+var rootPath =  path.join(__dirname,'/../../');
 
 module.exports = {
-	development: {
-		rootPath: rootPath,
-		db: 'mongodb://localhost:27017/Auction',
-		port: process.env.PORT || 3030
-	}
-}
+  rootPath : rootPath,
+  _PORT : 7777
+};

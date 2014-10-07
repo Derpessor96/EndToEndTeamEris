@@ -1,22 +1,38 @@
 var express = require('express'),
-    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    session = require('express-session'),
-    passport = require('passport');
+    bodyParser = require('body-parser');
 
-module.exports = function (app, config) {
-	app.set('view engine', 'jade');
-	app.set('views', config.rootPath + '/server/views');
-	app.use(cookieParser());
-	app.use(bodyParser.json());
-	app.use(bodyParser.urlencoded({ extended: false }));
-	app.use(session(
-		{
-			secret: 'super secret session key',
-			resave: true,
-			saveUninitialized: true
-		}));
-	app.use(passport.initialize());
-	app.use(passport.session());
-	app.use(express.static(config.rootPath + '/public'));
-}
+module.exports = function(app, config) {
+   //var routes = require('./routes/index'),
+   //    users = require('./routes/user');
+
+    app.set('view engine', 'jade');
+    app.set('views', config.rootPath + '/server/views');
+
+    app.use(favicon(config.rootPath + '/public/img/favicon.ico'));
+
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+
+    app.use(logger('dev'));
+
+    app.use(cookieParser());
+
+    //app.use(session({secret: 't3@mEr1s'}));
+
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    app.use(express.static(config.rootPath + '/public'));
+    //app.use('/', routes);
+    //app.use('/users', users);
+};
+
+
+
