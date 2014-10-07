@@ -6,6 +6,7 @@ var app = express(),
 
 require('./server/config/express')(app, serverConfig);
 require('./server/config/mongoose')(serverConfig);
+requier('./server/config/passport')();
 
 app.listen(serverConfig._PORT);
 console.log("Server running on port: " + serverCofig._PORT);
