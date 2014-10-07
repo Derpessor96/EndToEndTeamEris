@@ -7,7 +7,7 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 module.exports = function(app, config) {
-   //var routes = require('./routes/index'),
+     var routes = require(config.rootPath+'server/config/routes')(app);
    //    users = require('./routes/user');
 
     app.set('view engine', 'jade');
