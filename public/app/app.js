@@ -17,10 +17,19 @@ app.config(function($routeProvider, $locationProvider) {
 
     $routeProvider
         .when('/', {
-            templateUrl: 'app/partials/main/home.html'//,controller: 'MainCtrl'
+            templateUrl: 'app/partials/main/home.html'
+            ,controller: 'MainCtrl'
         })
         .when('/signup', {
-            templateUrl: '/app/account/signup',
+            templateUrl: './app/account/signup.html',
             controller: 'SignUpCtrl'
         })
+});
+
+app.run(function($rootScope, $location) {
+    $rootScope.$on('$routeChangeError', function(ev, current, previous, rejection) {
+        if (rejection === 'not authorized') {
+            $location.path('/');
+        }
+    })
 });
