@@ -18,8 +18,7 @@ var offerSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     creationDate: { type: Date },
     expirationDate: { type: Date },
-    sold: { type: Boolean, required: true },
-    created: { type: Date }
+    sold: { type: Boolean, required: true }
 });
 
 var OfferData = mongoose.model('Offer', offerSchema);
