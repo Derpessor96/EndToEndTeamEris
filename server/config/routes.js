@@ -2,9 +2,8 @@ var auth = require('./auth'),
     controllers = require('../controllers');
 
 module.exports = function(app) {
-    app.get('/', function(req, res) {
-        res.render('index');
-    });
+    var apiPrefix = '/api';
+
 
     app.post('/login', auth.login);
     app.post('/logout', auth.logout);
@@ -12,17 +11,16 @@ module.exports = function(app) {
     /* User-related routes START*/
 
     //Get all users
-    app.get('/user', function(req, res) {
-        res.render('index');
-    });
+    app.get(apiPrefix+'/user', controllers.usersController.getAllUsers);
 
     // Get user by ID
-    app.get('/user/:id', function(req, res) {
-        res.render('index');
-    });
+    app.get(apiPrefix+'/user/:id', controllers.usersController.getUserById);
 
     // Register new user
-    app.post('/user', controllers.usersController.registerUser);
+    app.post(apiPrefix+'/user', controllers.usersController.registerUser);
+
+    // Update existing new user
+    app.put(apiPrefix+'/user', controllers.usersController.updateUser);
 
     /*    User-related routes END   */
     /********************************/
@@ -93,4 +91,8 @@ module.exports = function(app) {
     /* Offer-related routes END*/
     /******************************/
     /* Offer-related routes Start*/
+
+    app.get('/', function(req, res) {
+        res.render('index');
+    });
 };

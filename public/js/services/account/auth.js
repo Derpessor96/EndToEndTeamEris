@@ -3,7 +3,7 @@ app.factory('auth', function($http, $q, identity) {
         signup: function(user) {
             var deferred = $q.defer();
 
-            $http.post('/user', user)
+            $http.post('/api/user', user)
                 .success(function() {
                     deferred.resolve();
                 }, function(response) {
