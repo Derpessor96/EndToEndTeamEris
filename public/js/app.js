@@ -17,15 +17,15 @@ app.config( function ( $routeProvider, $locationProvider ) {
 
     $routeProvider
         .when( '/', {
-            templateUrl: 'app/partials/main/home.html',
+            templateUrl: 'views/main/home.html',
             controller: 'MainCtrl'
         } )
-        .when( '/latest-ads', {
-            templateUrl: 'app/partials/main/home.html',
+        .when( '/offers', {
+            templateUrl: 'views/main/offers.html',
             controller: 'MainCtrl'
         } )
         .when( '/signup', {
-            templateUrl: './app/account/signup.html',
+            templateUrl: 'views/signup.html',
             controller: 'SignUpCtrl'
         } )
         .otherwise( {
