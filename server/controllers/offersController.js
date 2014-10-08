@@ -1,4 +1,5 @@
 var data = require('../data');
+var defaultPageSize = 10;
 
 module.exports = {
     // POST /api/offers - create new offer
@@ -11,15 +12,22 @@ module.exports = {
             }
         });
     },
-    // GET /api/user/:id/offers?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
-    // TODO: Parse the query string, better error handling
+    // GET /api/user/:id/offers?page=x&orderBy=(_id, price, creationDate, title)&orderType=(asc, desc)
     getAllOffers: function(req, res, next) {
-        data.offers.getOffers({}, {}, function(err, collection) {
-            if (err) {
-                console.log('Offers could not be loaded: ' + err);
-            }
+        var options = {};
+        if(req.query) {
+            options.size = req.query.size || defaultPageSize;
+            options.page = req.query.page || 0;
+            options.sortBy = req.query.orderBy || '_id';
+            options.sortMethod = req.query.orderType || 'asc';
+        }
 
-            res.send(collection);
+        data.offers.getOffers({ seller: req.params.id }, options, function(err, collection) {
+            if (err) {
+                res.status(400).send();
+            } else {
+                res.send(collection);
+            }
         });
     },
     // GET /api/offers/:id

@@ -16,19 +16,19 @@ module.exports = {
             });
         });
     },
-    getOffers: function (req, options, callback) {
+    getOffers: function (query, options, callback) {
         var page,
             size,
             sortBy;
-        usersData.findUser(req.seller, function (err, res) {
+        usersData.findUser(query.seller, function (err, res) {
             if (res) {
-                req.seller = res;
+                query.seller = res;
             }
-            categoriesData.findCategory(req.category, function (err, res) {
+            categoriesData.findCategory(query.category, function (err, res) {
                 if (res) {
-                    req.category = res;
+                    query.category = res;
                 }
-                offers.find(req, function (err, res) {
+                offers.find(query, function (err, res) {
                     if (options) {
                         page = options.page || 0;
                         size = options.size || 10;
