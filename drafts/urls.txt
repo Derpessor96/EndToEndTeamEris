@@ -11,7 +11,6 @@
 GET /api/user?page=x
 POST /api/user
 PUT /api/user
-GET /api/user/:id
 GET /api/user/:id/sales?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
 GET /api/user/:id/offers?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
 POST /api/offers - create new offer
