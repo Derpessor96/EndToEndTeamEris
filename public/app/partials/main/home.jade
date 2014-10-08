@@ -1,13 +1,13 @@
 .container
     .jumbotron
-        h1 Telerik Academy Courses
-        h2 Best trainings in the world
+        img(src= "../../img/kupime_logo.png")
+        h2 All offers in one place
     .row
-        .col-md-6
+        .col-md-3
             .panel.panel-info
-                .panel-heading.text-center Featured
-                .panel-body(ng-include="'/partials/main/featured-courses'")
-        .col-md-6
+                .panel-heading.text-center Categories
+                .panel-body(ng-include="'/partials/main/categories'")
+        .col-md-9
             .panel.panel-info
-                .panel-heading.text-center New
-                .panel-body(ng-include="'/partials/main/new-courses'")
+                .panel-heading.text-center New Offers
+                .panel-body(ng-include="'/partials/main/new-offers'")
