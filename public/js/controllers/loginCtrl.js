@@ -1,13 +1,13 @@
-app.controller('LoginCtrl', function($scope, $location, notifier, identity, auth) {
+app.controller('LoginCtrl', function($scope, $location, identity, auth) {
     $scope.identity = identity;
-
+    console.log('sefezfzef')
     $scope.login = function(user) {
         auth.login(user).then(function(success) {
             if (success) {
-                notifier.success('Successful login!');
+               // notifier.success('Successful login!');
             }
             else {
-                notifier.error('Username/Password combination is not valid!');
+                //notifier.error('Username/Password combination is not valid!');
             }
         });
     }

@@ -22,7 +22,7 @@ module.exports = function(app) {
     });
 
     // Register new user
-    app.post('/user', controllers.users.registerUser);
+    app.post('/user', controllers.usersController.registerUser);
 
     /*    User-related routes END   */
     /********************************/
