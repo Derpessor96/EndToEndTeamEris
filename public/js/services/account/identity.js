@@ -1,9 +1,8 @@
-app.factory('identity', function($window, UsersResource) {
-    var user;
-    if ($window.bootstrappedUserObject) {
-        user = new UsersResource();
-        angular.extend(user, $window.bootstrappedUserObject);
-    }
+app.factory('identity', function($window) {
+	var user;
+	if ($window.bootstrappedUserObject) {
+		user = $window.bootstrappedUserObject;
+	}
     return {
         currentUser: user,
         isAuthenticated: function() {

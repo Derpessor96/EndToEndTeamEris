@@ -1,4 +1,4 @@
-app.factory('auth', function($http, $q, identity, UsersResource) {
+app.factory('auth', function($http, $q, identity) {
     return {
         signup: function(user) {
             var deferred = $q.defer();
@@ -12,35 +12,34 @@ app.factory('auth', function($http, $q, identity, UsersResource) {
 
             return deferred.promise;
         },
-        update: function(user) {
-            var deferred = $q.defer();
+        update: function (user) {
+        	var deferred = $q.defer();
 
-            var updatedUser = new UsersResource(user);
-            updatedUser._id = identity.currentUser._id;
-            updatedUser.$update().then(function() {
-                identity.currentUser.firstName = updatedUser.firstName;
-                identity.currentUser.lastName = updatedUser.lastName;
-                deferred.resolve();
-            }, function(response) {
-                deferred.reject(response);
-            });
+        	user._id = identity.currentUser._id;
+        	$http.put('/api/users/', user)
+				.then(function () {
+					identity.currentUser.firstName = user.firstName;
+					identity.currentUser.lastName = user.lastName;
+					deferred.resolve();
+				}, function (response) {
+					deferred.reject(response);
+				});
 
-            return deferred.promise;
+        	return deferred.promise;
         },
         login: function(user){
             var deferred = $q.defer();
 
-            $http.post('/login', user).success(function(response) {
-                if (response.success) {
-                    var user = new UsersResource();
-                    angular.extend(user, response.user);
-                    identity.currentUser = user;
-                    deferred.resolve(true);
-                }
-                else {
-                    deferred.resolve(false);
-                }
-            });
+            $http.post('/login', user)
+                .success(function(response) {
+                    if (response.success) {
+                        identity.currentUser = response.user;
+                        deferred.resolve(true);
+                    }
+                    else {
+                        deferred.resolve(false);
+                    }
+                });
 
             return deferred.promise;
         },
