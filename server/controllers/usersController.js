@@ -2,9 +2,8 @@ var User = require('mongoose').model('User');
 
 module.exports = {
     registerUser: function (req, res, callback) {
-        console.log('In register');
         var userModel = req.body;
-        this.findUser({ username: userModel.username}, function (err, foundUser) {
+        User.find({ username: userModel.username}).exec(function (err, foundUser) {
             if (err) console.log(err);
             else {
                 if (foundUser && foundUser.length > 0) {
