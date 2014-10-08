@@ -1,7 +1,7 @@
 .container
     .well
         form.form-horizontal(name="signUpForm")
-            fieldset
+            fieldset(ng-controller="SignUpCtrl")
                 legend Create New User
                 .form-group
                     label.col-md-2.control-label(for="first-name") First Name
