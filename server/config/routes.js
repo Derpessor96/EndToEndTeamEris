@@ -50,9 +50,7 @@ module.exports = function(app) {
     });
 
     // Get Offer by ID
-    app.get('/offer/:id', function(req, res) {
-        res.render('index');
-    });
+    app.get('/offer/:id', controllers.offersController.getOfferById);
 
     // Get all Offers by USER ID
     app.get('/offer/:userId', function(req, res) {
@@ -85,9 +83,7 @@ module.exports = function(app) {
     });
 
     // Create new Offer
-    app.post('/offer', function(req, res) {
-        res.render('index');
-    });
+    app.post('/offer', controllers.offersController.createOffer);
     /* Offer-related routes END*/
     /******************************/
     /* Offer-related routes Start*/
