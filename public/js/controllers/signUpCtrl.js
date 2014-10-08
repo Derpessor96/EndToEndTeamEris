@@ -1,10 +1,13 @@
-app.controller( 'SignUpCtrl', function ( $scope, $location, auth, notifier ) {
+app.controller( 'SignUpCtrl', function ( $scope, $location, auth ) {
 	$scope.signup = function ( user ) {
+        console.log('In signup controller client side');
 		auth.signup( user ).then( function () {
-			notifier.success( 'Registration successful!' );
+            console.log('registered');
+			//notifier.success( 'Registration successful!' );
 			$location.path( '/' );
 		}, function ( error ) {
-			notifier.error( error.Message );
+            console.log(error);
+			//notifier.error( error.Message );
 		} )
 	}
 } );
