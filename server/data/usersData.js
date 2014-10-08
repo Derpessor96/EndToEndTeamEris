@@ -21,5 +21,12 @@ module.exports = {
                 callback(err, res);
             }
         });
+    },
+    findById: function (id, callback) {
+        User.findOne({ '_id': id }, function (err, res) {
+            if (callback) {
+                callback(err, res);
+            }
+        });
     }
 };

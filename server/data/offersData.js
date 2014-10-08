@@ -1,13 +1,13 @@
 var offers = require('../models/offer');
-var categoriesCtrl = require('./CategoriesController');
-var usersCtrl = require('./UsersController');
+var categoriesData = require('./categoriesData');
+var usersData = require('./usersData');
 var offerDaysDuration = 14;
 
 module.exports = {
     createOffer: function (offerModel, callback) {
-        categoriesCtrl.findCategory(offerModel.category, function (err, res) {
+        categoriesData.findCategory(offerModel.category, function (err, res) {
             offerModel.category = res;
-            usersCtrl.findUser(offerModel.seller, function (err, res) {
+            usersData.findUser(offerModel.seller, function (err, res) {
                 offerModel.seller = res;
                 offerModel.creationDate = new Date();
                 offerModel.expirationDate = new Date().setDate(offerModel.creationDate.getDate() + offerDaysDuration);
@@ -20,11 +20,11 @@ module.exports = {
         var page,
             size,
             sortBy;
-        usersCtrl.findUser(req.seller, function (err, res) {
+        usersData.findUser(req.seller, function (err, res) {
             if (res) {
                 req.seller = res;
             }
-            categoriesCtrl.findCategory(req.category, function (err, res) {
+            categoriesData.findCategory(req.category, function (err, res) {
                 if (res) {
                     req.category = res;
                 }
