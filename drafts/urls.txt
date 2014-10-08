@@ -1,0 +1,19 @@
+/
+/users - homepage
+/users/:id - get user information(username, name, password it is the current user or current user is admin)
+/users/:id/offers - gets user offers if authenticated
+/users/:id/sales - gets user sales if authenticated
+/offers - gets offers(most recent 10, all with paging if authenticated)
+/offers/:id - gets offer details(includes 'buy' button)
+/offers/create - form for creating a new offer
+/register - form for registering a user
+
+GET /api/user?page=x
+POST /api/user
+PUT /api/user
+GET /api/user/:id
+GET /api/user/:id/sales?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
+GET /api/user/:id/offers?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
+POST /api/offers - create new offer
+GET /api/offers/:id
+POST /api/offers/:id - accept offer

@@ -16,7 +16,7 @@ app.factory('auth', function($http, $q, identity) {
         	var deferred = $q.defer();
 
         	user._id = identity.currentUser._id;
-        	$http.put('/api/users/', user)
+        	$http.put('/api/user/', user)
 				.then(function () {
 					identity.currentUser.firstName = user.firstName;
 					identity.currentUser.lastName = user.lastName;
