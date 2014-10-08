@@ -1,0 +1,13 @@
+.container
+    .jumbotron
+        img(src= "../../img/kupime_logo.png")
+        h2 All offers in one place
+    .row
+        .col-md-3
+            .panel.panel-info
+                .panel-heading.text-center Categories
+                .panel-body(ng-include="'/partials/main/categories'")
+        .col-md-9
+            .panel.panel-info
+                .panel-heading.text-center New Offers
+                .panel-body(ng-include="'/partials/main/new-offers'")

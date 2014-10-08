@@ -1,7 +1,13 @@
+var auth = require('./auth'),
+    controllers = require('../controllers');
+
 module.exports = function(app) {
-    app.get('/test', function(req, res) {
+    app.get('/', function(req, res) {
         res.render('index');
     });
+
+    app.post('/login', auth.login);
+    app.post('/logout', auth.logout);
 
     /* User-related routes START*/
 
@@ -16,9 +22,7 @@ module.exports = function(app) {
     });
 
     // Register new user
-    app.post('/user', function(req, res) {
-        res.render('index');
-    });
+    app.post('/user', controllers.users.registerUser);
 
     /*    User-related routes END   */
     /********************************/

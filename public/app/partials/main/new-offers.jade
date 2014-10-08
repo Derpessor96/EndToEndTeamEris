@@ -1,0 +1,6 @@
+div(ng-repeat="offer in newOffers | orderBy: '-creationDate' | limitTo: 10")
+    .row
+        .col-md-3
+            | {{ offer.creationDate | date: 'MMM d yyyy' }}
+        .col-md-9
+            a(href="#/offers/{{ offer._id }}") {{ offer.title }}
