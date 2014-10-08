@@ -28,6 +28,9 @@ app.config( function ( $routeProvider, $locationProvider ) {
             templateUrl: './app/account/signup.html',
             controller: 'SignUpCtrl'
         } )
+        .otherwise( {
+            redirectTo: '/'
+        } );
 } )
     .constant( 'baseServiceUrl', 'http://localhost:7777/' );
 
