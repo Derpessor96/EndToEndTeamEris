@@ -6,7 +6,7 @@ var userSchema = new mongoose.Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     pictureUrl: { type: String },
-    role: { type: String, required: true }
+    role: { type: String, default: 'user', required: true }
 });
 
 var UserData = mongoose.model('User', userSchema);
