@@ -99,6 +99,6 @@ module.exports = function(app) {
     app.get(apiPrefix + '/user/:id/sales', controllers.salesController.getAllSales);
 
     app.get('/', function(req, res) {
-        res.render('index');
+    	res.render('index', { currentUser: req.user });
     });
 };
