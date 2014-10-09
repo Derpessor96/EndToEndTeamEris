@@ -4,7 +4,8 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+	session = require('express-session');
 
 module.exports = function(app, config) {
    //    users = require('./routes/user');
@@ -14,6 +15,8 @@ module.exports = function(app, config) {
 
     app.use(favicon(config.rootPath + '/public/img/favicon.ico'));
 
+    app.use(cookieParser());
+
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
@@ -21,9 +24,7 @@ module.exports = function(app, config) {
 
     app.use(logger('dev'));
 
-    app.use(cookieParser());
-
-    //app.use(session({secret: 't3@mEr1s'}));
+    app.use(session({secret: 't3@mEr1s'}));
 
     app.use(passport.initialize());
     app.use(passport.session());
@@ -31,8 +32,6 @@ module.exports = function(app, config) {
     app.use(express.static(config.rootPath + '/public'));
     //app.use('/', routes);
     //app.use('/users', users);
-
-    var routes = require(config.rootPath+'server/config/routes')(app);
 };
 
 
