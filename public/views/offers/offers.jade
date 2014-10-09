@@ -29,7 +29,14 @@ div.row
                     label.control-label Only with picture
                 div.col-sm-1
                     input(type="checkbox" ng-model="request.picture")
-                div.col-sm-1.col-sm-offset-6
+                div.col-sm-3
+                    div.col-sm-3
+                        button.btn.btn-primary( ng-click="previousPage()", ng-disabled="request.page == 1") &lt;&lt;
+                    div.col-sm-5
+                        input.form-control(type="text", ng-model="request.page" value="1")
+                    div.col-sm-3
+                        button.btn.btn-primary( ng-click="nextPage()") &gt;&gt;
+                div.col-sm-1.col-sm-offset-3
                     button.pull-right.btn.btn-primary( ng-click="filter(request)") Filter            
         table.table.table-bordered.ng-table.table-container
             thead
