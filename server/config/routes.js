@@ -27,19 +27,14 @@ module.exports = function(app) {
     /* Category-related routes START*/
 
     // Get all categories
-    app.get('/category', function(req, res) {
-        res.render('index');
-    });
+    app.get(apiPrefix+'/category', controllers.categoriesController.all);
 
     // Get category by ID
-    app.get('/category/:id', function(req, res) {
-        res.render('index');
-    });
+    app.get(apiPrefix+'/category/:id', controllers.categoriesController.findCategoryById);
 
     // Create new Category
-    app.post('/user', function(req, res) {
-        res.render('index');
-    });
+    // TODO : add autorization for this route
+    app.post(apiPrefix+'/category', controllers.categoriesController.createCategory);
     /* Category-related routes END*/
     /******************************/
     /* Offer-related routes Start*/

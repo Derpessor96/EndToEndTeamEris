@@ -2,9 +2,9 @@ var User = require('mongoose').model('User');
 
 module.exports = {
     registerUser: function (req, res, callback) {
-        var userModel = req.body;
+        var newUser = req.body;
 
-        User.find({ username: userModel.username}).exec(function (err, foundUser) {
+        User.find({ username: newUser.username}).exec(function (err, foundUser) {
             if (err){
                 console.log(err);
             }
@@ -13,7 +13,9 @@ module.exports = {
                     console.log('User already in the database');
                     callback(err, foundUser);
                 } else {
-                    User.create(userModel, callback);
+                    newUser.dateRegistered = new Date();
+                    User.create(newUser, callback);
+                    res.send({redirect: '/'});
                 }
             }
         });
