@@ -18,11 +18,17 @@ block main-content
             img(src= "../../img/kupime_logo.png")
         .col-md-7
             h2 All offers in one place
-    form.form-search.text-center
-        .form-group
-            input.input-medium.search-query(type="text")
-            button.btn.btn-primary(type="submit")
-
+    form.form-search(ng-controller="categoriesController")
+        .form-group.filter-control
+            .col-md-3.col-md-offset-2
+                input.form-control.input-medium.search-query(type="text")
+            .col-md-2
+                label.col-md-2.control-label(for="categories")
+                | Category:
+            .col-md-3
+                select.form-control(categories, id="categories",required="required",ng-model="query.category" )
+            .col-md-1
+                button.btn.btn-primary(type="submit") Search
     section
         div(ng-view)
     footer

@@ -1,3 +1,6 @@
-app.controller('MainCtrl', function($scope) {
-    //$scope.courses = cachedCourses.query();
-});
+'use strict';
+
+app.controller('mainController', ['$scope', 'CategoriesResource',
+    function TODO($scope, $location, auth, notifier, TripsResource, CitiesResource) {
+    }
+]);

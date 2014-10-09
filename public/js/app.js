@@ -21,6 +21,9 @@ app.config( function ( $routeProvider, $locationProvider ) {
 
             controller: 'MainCtrl'
         } )
+       //.when('/categories', {
+       //    templateUrl: 'views/partials/trip-create.html',
+       //    controller: 'TripCreateCtrl'
         .when( '/offers', {
             templateUrl: 'partials/offers/offers',
             controller: 'MainCtrl'

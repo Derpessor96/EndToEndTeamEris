@@ -33,6 +33,9 @@ body {
 	width: 150px;
 	height: 150px;
 }
+.panel-info{
+	margin-top: 40px;
+}
 .filter-control
 {
 	margin-top: 40px;
