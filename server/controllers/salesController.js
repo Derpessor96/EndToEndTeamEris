@@ -12,7 +12,7 @@ module.exports = {
             options.sortMethod = req.query.orderType || 'asc';
         }
 
-        // TODO: Research whether it is buyer or seller ot both
+        // TODO: Research whether it is buyer or seller or both
         data.sales.getSales({ seller: req.params.id }, options, function (err, collection) {
             if (err) {
                 res.status(400).send();
