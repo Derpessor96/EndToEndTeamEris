@@ -14,15 +14,18 @@ block main-content
                         a(href="#/users") Users
                 div(ng-include="'partials/main/login'")
     .jumbotron
-        .col-md-5
+        .col-md-4
             img(src= "../../img/kupime_logo.png")
-        .col-md-7
+        .col-md-4
             h2 All offers in one place
+        .col-md-3
+            .col-sm-9
+                input.form-control.input-medium.search-query(type="text")
+            .col-sm-3
+                button.btn.btn-primary(type="submit") Search
     form.container.form-search(ng-controller="categoriesController")
         .form-group.filter-control
-            .col-md-4.col-md-offset-1
-                input.form-control.input-medium.search-query(type="text")
-            .col-md-2
+            .col-md-2.col-md-offset-1
                 label.col-md-2.control-label(for="categories")
                 | Category:
             .col-md-3
