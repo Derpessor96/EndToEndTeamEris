@@ -1,0 +1,36 @@
+.container
+    .well
+        form.form-horizontal(name="createOffer")
+            fieldset
+                legend Create Offer
+                .form-group
+                    label.col-md-2.control-label Title
+                    .col-md-10
+                        input.form-control(type="text", placeholder="Title", ng-model="offer.title", required)
+                .form-group
+                    label.col-md-2.control-label Category
+                    .col-md-10
+                        input.form-control(type="text", placeholder="Category", ng-model="offer.category", required)
+                .form-group
+                    label.col-md-2.control-label Price
+                    .col-md-10
+                        input.form-control(type="text", placeholder="Price", ng-model="offer.price", required)
+                .form-group
+                    label.col-md-2.control-label Description
+                    .col-md-10
+                        input.form-control(type="text", placeholder="Description", ng-model="offer.description", required)
+                .form-group
+                    label.col-md-2.control-label Creation Date
+                    .col-md-10
+                        input.form-control(type="text", date-picker, placeholder="yyyy-MM-dd", ng-model="offer.creationDate", required)
+                .form-group
+                    label.col-md-2.control-label Expiration Date
+                    .col-md-10
+                        input.form-control(type="text", date-picker, placeholder="yyyy-MM-dd", ng-model="offer.expirationDate", required)
+                .form-group
+                    label.col-md-2.control-label Picture
+                    .col-md-10
+                        input(type="file", ng-model="offer.picture")           
+                .pull-right
+                    button.btn.btn-primary(ng-click="create(offer)", ng-disabled="createOffer.$invalid") Create
+                    a.btn.btn-primary(href="#/") Cancel

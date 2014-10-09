@@ -1,0 +1,23 @@
+div.userDetails
+	div.row
+		div.col-sm-3
+			img.profile-picture(src="{{user.pictureUrl}}")
+		div.col-sm-9
+			ul.profileInfo
+				li
+					strong First Name: 
+					span {{user.firstName}}
+				li
+					strong Last Name: 
+					span {{user.lastName}}
+				li
+					strong Username: 
+					span {{user.username}}
+				li
+					strong Date of registration: 
+					span {{user.dateRegistered | date: 'MMM d yyyy' }}
+	div.row
+		div.col-sm-3
+			a(href="/#users/{{user.id}}/offers") Show all offers from {{user.username}}
+		div.col-sm-3
+			a(href="/#users/{{user.id}}/sales") Show all sales from {{user.username}}

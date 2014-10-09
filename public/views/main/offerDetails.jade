@@ -1,0 +1,29 @@
+div.offerDetails
+	div.row
+		div.col-sm-3
+			img.offer-picture(src="{{offer.pictureUrl}}")
+		div.col-sm-9
+			ul.offerInfo
+				li
+					strong Title: 
+					span {{offer.title}}
+				li
+					strong Seller: 
+					span
+						a(href="/users/{{user.id}}") {{user.firstName + ' ' + user.lastName}}
+				li
+					strong Category: 
+					span {{offer.category.name}}
+				li
+					strong Price: 
+					span {{offer.price}}
+				li
+					strong Description: 
+					span {{offer.description}}
+				li
+					strong Creation Date: 
+					span {{offer.creationDate | date: 'MMM d yyyy' }}
+				li
+					strong Expiration Date: 
+					span {{offer.expirationDate | date: 'MMM d yyyy' }}
+	

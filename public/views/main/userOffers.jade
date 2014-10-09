@@ -1,0 +1,21 @@
+div.user-offers
+    h1.text-center Offers from {{user.firstName + ' ' + user.lastName}}
+    table.table.table-bordered.ng-table.table-container
+        thead
+            tr
+                th Title
+                th Category
+                th Description
+                th Creation Date
+                th Price
+                th Available
+        tbody
+            tr( ng-repeat="offer in userOffers")
+                td 
+                    a (href="#/offers/{{offer.id}}")
+                        | {{offer.title}}
+                td {{offer.category}}
+                td {{offer.description}}
+                td {{offer.creationDate | date: 'MMM d yyyy' }}
+                td {{offer.price}}
+                td {{offer.sold}}

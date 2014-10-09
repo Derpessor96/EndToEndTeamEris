@@ -13,6 +13,16 @@ block main-content
                     li
                         a(href="#/users") Users
                 div(ng-include="'views/login.html'")
+    .jumbotron
+        .col-md-5
+            img(src= "../../img/kupime_logo.png")
+        .col-md-7
+            h2 All offers in one place
+    form.form-search.text-center
+        .form-group
+            input.input-medium.search-query(type="text")
+            button.btn.btn-primary(type="submit")
+
     section
         div(ng-view)
     footer
