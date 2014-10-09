@@ -1,9 +1,9 @@
 div.offerDetails
 	div.row
-		div.col-sm-3
-			img.offer-picture(src="{{offer.pictureUrl}}")
+		div.col-sm-2.col-sm-offset-1
+			img.picture(src="{{offer.pictureUrl}}", alt="offer picture")
 		div.col-sm-9
-			ul.offerInfo
+			ul.info
 				li
 					strong Title: 
 					span {{offer.title}}

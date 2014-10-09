@@ -13,7 +13,9 @@
                 span.caret
             ul.dropdown-menu
                 li(ng-show="identity.currentUser.isAdmin()")
-                    a(href="#/admin/users") Users
+                    a(href="#/admin/users-management") Users Management
+                li(ng-show="identity.currentUser.isAdmin()")
+                    a(href="#/admin/offers-management") Offers Management
                 li(ng-show="identity.isAuthenticated()")
                     a(href="#/profile") Profile
                 li

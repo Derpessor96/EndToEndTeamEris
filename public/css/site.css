@@ -1,4 +1,6 @@
+@import url("//fonts.googleapis.com/css?family=Ubuntu");
 body {
+	font-family: "Ubuntu";
 	padding-top: 80px;
 }
 .jumbotron{
@@ -25,11 +27,26 @@ body {
 .toast-top-right {
 	top: 70px;
 }
+.picture
+{
+	box-shadow: 2px 2px 10px #000;
+	width: 150px;
+	height: 150px;
+}
+.filter-control
+{
+	margin-top: 40px;
+	margin-bottom: 20px;
+}
 footer {
+	margin-top: 20px;
 	padding-left: 120px;
 	padding-right: 120px;
 }
 footer p {
 	border-top: 1px solid #808080;
 	padding-top: 10px;
+}
+ul.info{
+	list-style-type: none;
 }

@@ -21,31 +21,31 @@ app.config( function ( $routeProvider, $locationProvider ) {
             controller: 'MainCtrl'
         } )
         .when( '/offers', {
-            templateUrl: 'views/main/offers.html',
+            templateUrl: 'views/main/offers/offers.html',
             controller: 'MainCtrl'
         } )
         .when( '/offers/create', {
-            templateUrl: 'views/main/createOffer.html',
+            templateUrl: 'views/main/offers/createOffer.html',
             controller: 'MainCtrl'
         } )
         .when( '/offers/:id', {
-            templateUrl: 'views/main/offerDetails.html',
+            templateUrl: 'views/main/offers/offerDetails.html',
             controller: 'MainCtrl'
         } )
         .when( '/users', {
-            templateUrl: 'views/main/users.html',
+            templateUrl: 'views/main/users/users.html',
             controller: 'MainCtrl'
         } )
         .when( '/users/:id', {
-            templateUrl: 'views/main/userDetails.html',
+            templateUrl: 'views/main/users/userDetails.html',
             controller: 'MainCtrl'
         } )
         .when( '/users/:id/sales', {
-            templateUrl: 'views/main/userSales.html',
+            templateUrl: 'views/main/users/userSales.html',
             controller: 'MainCtrl'
         } )
         .when( '/users/:id/offers', {
-            templateUrl: 'views/main/userOffers.html',
+            templateUrl: 'views/main/users/userOffers.html',
             controller: 'MainCtrl'
         } )
         .when( '/signup', {
