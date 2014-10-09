@@ -1,48 +1,28 @@
 var usersData = require('./usersData');
 var sales = require('../models/sale');
+var offers = require('../models/offer');
 
 module.exports = {
-    getSales: function (query, options, callback) {
-        var page,
-            size,
-            sortBy;
-        usersData.findUser(query.buyer, function (err, res) {
-            if (res) {
-                query.buyer = res;
-            }
-            sales.find(query, function (err, res) {
-                if (options) {
-                    page = options.page || 0;
-                    size = options.size || 10;
-                    sortBy = options.sortBy || '_id';
-                    sortMethod = options.sortMethod || 'asc';
+    getAllSales: function (callback) {
+        sales.find({}, function (err, collection) {
 
-                    var sorted = res.sort(function (x, y) {
-                        if (sortMethod == 'asc') {
-                            return x[options.sortBy] > y[options.sortBy] ? 1 : x[options.sortBy] < y[options.sortBy] ? -1 : 0;
-                        } else if (sortMethod == 'desc') {
-                            return x[options.sortBy] > y[options.sortBy] ? -1 : x[options.sortBy] < y[options.sortBy] ? 1 : 0;
-                        }
-                    });
-                    var paginated = sorted.slice(page * size, size);
-                    if (callback) {
-                        callback(err, paginated);
-                    }
-                }
-            });
+              if (callback) {
+                    callback(err, collection);
+              }
         });
     },
-    createSale: function(offerId, username, callback){
+    createSale: function(offerId, id, callback){
         var buyerId;
-        usersData.findUser(username, function(err, res){
+        usersData.findById(id, function(err, res){
             if(res) {
                 buyerId = res._id;
                 offers.findOne({ _id: offerId }, function(err, offer){
                     if(offer) {
-                        if(buyerId === offer.seller){
+                        console.log(buyerId);
+                        console.log(offer.seller);
+                        if(buyerId.toString().localeCompare(offer.seller.toString())){
                             callback({ message: 'Could not buy your own offer.'});
-                        }
-                        if(!offer.sold){
+                        } else if(!offer.sold){
                             offer.sold = true;
                             offer.save(function(){
                                 sales.create({
