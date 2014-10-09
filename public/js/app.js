@@ -17,40 +17,40 @@ app.config( function ( $routeProvider, $locationProvider ) {
 
     $routeProvider
         .when( '/', {
-            templateUrl: 'views/main/home.html',
+            templateUrl: 'partials/main/home',
 
             controller: 'MainCtrl'
         } )
         .when( '/offers', {
-            templateUrl: 'views/main/offers/offers.html',
+            templateUrl: 'partials/offers/offers',
             controller: 'MainCtrl'
         } )
         .when( '/offers/create', {
-            templateUrl: 'views/main/offers/createOffer.html',
+            templateUrl: 'partials/offers/createOffer',
             controller: 'MainCtrl'
         } )
         .when( '/offers/:id', {
-            templateUrl: 'views/main/offers/offerDetails.html',
+            templateUrl: 'partials/offers/offerDetails',
             controller: 'MainCtrl'
         } )
         .when( '/users', {
-            templateUrl: 'views/main/users/users.html',
+            templateUrl: 'partials/users/users',
             controller: 'MainCtrl'
         } )
         .when( '/users/:id', {
-            templateUrl: 'views/main/users/userDetails.html',
+            templateUrl: 'partials/users/userDetails',
             controller: 'MainCtrl'
         } )
         .when( '/users/:id/sales', {
-            templateUrl: 'views/main/users/userSales.html',
+            templateUrl: 'partials/users/userSales',
             controller: 'MainCtrl'
         } )
         .when( '/users/:id/offers', {
-            templateUrl: 'views/main/users/userOffers.html',
+            templateUrl: 'partials/users/userOffers',
             controller: 'MainCtrl'
         } )
         .when( '/signup', {
-            templateUrl: 'views/signup.html',
+            templateUrl: 'partials/main/signup',
             controller: 'SignUpCtrl'
         } )
         .otherwise( {

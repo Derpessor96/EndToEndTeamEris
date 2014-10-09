@@ -33,7 +33,6 @@ module.exports = function(app, config) {
     //app.use('/users', users);
 
     var routes = require(config.rootPath+'server/config/routes')(app);
-
 };
 
 
