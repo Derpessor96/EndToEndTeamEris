@@ -6,9 +6,8 @@ table.table.table-bordered.ng-table.table-container
 			th Description
 			th Creation Date
 			th Price
-			th Available
 	tbody
-		tr( ng-repeat="offer in newOffers | orderBy: '-creationDate' | limitTo: 10")
+		tr( ng-repeat="offer in offers")
 			td 
 				a (href="#/offers/{{offer.id}}")
 					| {{offer.title}}
@@ -16,4 +15,3 @@ table.table.table-bordered.ng-table.table-container
 			td {{offer.description}}
 			td {{offer.creationDate  | date: 'MMM d yyyy' }}
 			td {{offer.price}}
-			td {{offer.sold}}

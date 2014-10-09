@@ -26,6 +26,8 @@
 
 				result += '&orderType=' + orderType;
 			}
+
+			return result;
 		}
 	}
 });
