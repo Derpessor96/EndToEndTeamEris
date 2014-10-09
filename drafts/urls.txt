@@ -6,6 +6,7 @@
 /offers - gets offers(most recent 10, all with paging if authenticated)
 /offers/:id - gets offer details(includes 'buy' button)
 /offers/create - form for creating a new offer
+/categories
 /categories/:id/offers - gets all offers in given category
 /register - form for registering a user
 
