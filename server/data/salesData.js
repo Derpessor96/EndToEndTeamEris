@@ -48,6 +48,7 @@ module.exports = {
                                 sales.create({
                                     offerId: offerId,
                                     buyerId: buyerId,
+                                    sellerId: offer.seller,
                                     saleDate: new Date()
                                 }, function(err, sale){
                                     callback(err, sale);

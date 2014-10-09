@@ -7,6 +7,11 @@ var saleSchema = new mongoose.Schema({
         ref: 'Offer',
         required: true
     },
+    sellerId: {
+        type: Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
     buyerId: {
         type: Schema.ObjectId,
         ref: 'User',

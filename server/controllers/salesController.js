@@ -12,12 +12,21 @@ module.exports = {
             options.sortMethod = req.query.orderType || 'asc';
         }
 
-        // TODO: Research whether it is buyer or seller or both
+        var result = [];
+        // TODO: Research whether filter is for buyer, for seller or both, now is set for both
         data.sales.getSales({ seller: req.params.id }, options, function (err, collection) {
             if (err) {
                 res.status(400).send();
             } else {
-                res.send(collection);
+                result.push(collection);
+                data.sales.getSales({ buyer: req.params.id }, options, function(err, otherCollection){
+                    if (err) {
+                        res.status(400).send();
+                    } else {
+                        result.push(otherCollection);
+                        res.send(result);
+                    }
+                });
             }
         });
     }
