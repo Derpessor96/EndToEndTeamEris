@@ -24,6 +24,10 @@ app.config( function ( $routeProvider, $locationProvider ) {
             templateUrl: 'views/main/offers.html',
             controller: 'MainCtrl'
         } )
+        .when( '/offers/create', {
+            templateUrl: 'views/main/createOffer.html',
+            controller: 'MainCtrl'
+        } )
         .when( '/offers/:id', {
             templateUrl: 'views/main/offerDetails.html',
             controller: 'MainCtrl'
