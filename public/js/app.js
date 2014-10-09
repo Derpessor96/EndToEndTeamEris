@@ -18,6 +18,7 @@ app.config( function ( $routeProvider, $locationProvider ) {
     $routeProvider
         .when( '/', {
             templateUrl: 'views/main/home.html',
+
             controller: 'MainCtrl'
         } )
         .when( '/offers', {
