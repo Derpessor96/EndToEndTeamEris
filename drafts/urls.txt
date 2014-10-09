@@ -16,3 +16,8 @@ GET /api/user/:id/offers?page=x&orderBy=(id, price, creationDate, title)&orderTy
 POST /api/offers - create new offer
 GET /api/offers/:id
 POST /api/offers/:id - accept offer
+
+1. Home - public - последните 10 оферти
+2. MyStat - private - edit/delete my offers and see my sales
+3. Create offer - private
+4. Admin - edit/delete categories/users
