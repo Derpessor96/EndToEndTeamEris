@@ -1,0 +1,46 @@
+div.all-offers
+    h1.text-center Offers
+    div(ng-if="identity.isAuthenticated()")
+        div.row
+            div.col-sm-3
+                p.text-center Quick search
+                input.form-control(type="text", ng-model="search")
+            div.col-sm-3
+                p.text-center Sort
+                select.form-control(ng-model="request.orderBy")
+                        option (value="" selected="selected") None
+                        option (value="title") Title
+                        option (value="creationDate") Creation Date
+                        option (value="category") Category
+                        option (value="seller") Seller
+            div.col-sm-3
+                p.text-center Category
+                select.form-control(ng-model="request.category")
+        div.row
+            div.col-sm-2
+                label.col-sm-2.control-label Active
+                input(type="checkbox" ng-model="request.sold") 
+                br
+                label.col-sm-2.control-label  Only with picture
+                input(type="checkbox" ng-model="request.picture")
+            div.col-sm-2
+                button.btn.btn-default( ng-click="filter(request)") Filter            
+    table.table.table-bordered.ng-table.table-container
+        thead
+            tr
+                th Title
+                th Category
+                th Description
+                th Creation Date
+                th Price
+                th Available
+        tbody
+            tr( ng-repeat="offer in allOffers | filter:search")
+                td 
+                    a (href="#/offers/{{offer.id}}")
+                        | {{offer.title}}
+                td {{offer.category}}
+                td {{offer.description}}
+                td {{offer.creationDate}}
+                td {{offer.price}}
+                td {{offer.sold}}
