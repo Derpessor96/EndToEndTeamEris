@@ -14,14 +14,14 @@ module.exports = {
 
         var result = [];
         // TODO: Research whether filter is for buyer, for seller or both, now is set for both
-        data.sales.getAllSales({ sellerId: req.params.id }, options, function (err, collection) {
+        data.sales.getAllSales({ sellerId: req.params.id }, function (err, collection) {
             if (err) {
                 res.status(400).send();
             } else {
                 for(var i = 0; i < collection.length; i++){
                     result.push(collection[i]);
                 }
-                data.sales.getAllSales({ buyerId: req.params.id }, options, function(err, otherCollection){
+                data.sales.getAllSales({ buyerId: req.params.id }, function(err, otherCollection){
                     if (err) {
                         res.status(400).send();
                     } else {

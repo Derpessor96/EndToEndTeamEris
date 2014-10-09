@@ -3,9 +3,8 @@ var sales = require('../models/sale');
 var offers = require('../models/offer');
 
 module.exports = {
-    getAllSales: function (callback) {
-        sales.find({}, function (err, collection) {
-
+    getAllSales: function (query, callback) {
+        sales.find(query, function (err, collection) {
               if (callback) {
                     callback(err, collection);
               }
