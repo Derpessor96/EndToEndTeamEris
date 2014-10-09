@@ -32,6 +32,7 @@ module.exports = {
                 if (res) {
                     query.category = res;
                 }
+                query.sold = false;
                 offers.find(query, function (err, res) {
                     if (options) {
                         page = options.page || 0;
