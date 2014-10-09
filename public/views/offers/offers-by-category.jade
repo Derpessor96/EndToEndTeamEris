@@ -1,6 +1,6 @@
 div.row
     div.col-sm-10.col-sm-offset-1
-        h1.text-center Offers
+        h1.text-center Offers from category {{category.title}}
         div.filter-control(ng-if="identity.isAuthenticated()")
             div.row
                 div.col-sm-2
@@ -14,12 +14,7 @@ div.row
                             option (value="" selected="selected") None
                             option (value="title") Title
                             option (value="creationDate") Creation Date
-                            option (value="category") Category
-                            option (value="seller") Seller
-                div.col-sm-1
-                    label.control-label Category
-                div.col-sm-3
-                    select.form-control(ng-model="request.category")
+                            option (value="seller") Seller               
             div.row.filter-control
                 div.col-sm-1
                     label.control-label Active
@@ -42,7 +37,6 @@ div.row
             thead
                 tr
                     th Title
-                    th Category
                     th Description
                     th Creation Date
                     th Price
@@ -52,7 +46,6 @@ div.row
                     td 
                         a (href="#/offers/{{offer.id}}")
                             | {{offer.title}}
-                    td {{offer.category}}
                     td {{offer.description}}
                     td {{offer.creationDate | date: 'MMM d yyyy' }}
                     td {{offer.price}}
