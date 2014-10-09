@@ -22,8 +22,8 @@ div.offerDetails
 					span {{offer.description}}
 				li
 					strong Creation Date: 
-					span {{offer.creationDate}}
+					span {{offer.creationDate | date: 'MMM d yyyy' }}
 				li
 					strong Expiration Date: 
-					span {{offer.expirationDate}}
+					span {{offer.expirationDate | date: 'MMM d yyyy' }}
 	

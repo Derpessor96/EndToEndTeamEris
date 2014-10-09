@@ -1,0 +1,19 @@
+div.user-offers
+    h1.text-center Sales from {{user.firstName + ' ' + user.lastName}}
+    table.table.table-bordered.ng-table.table-container
+        thead
+            tr
+                th Title
+                th Category
+                th Description
+                th Creation Date
+                th Price
+        tbody
+            tr( ng-repeat="sale in userSales")
+                td 
+                    a (href="#/offers/{{offer.id}}")
+                        | {{offer.title}}
+                td {{sale.category}}
+                td {{sale.description}}
+                td {{sale.creationDate | date: 'MMM d yyyy' }}
+                td {{sale.price}}

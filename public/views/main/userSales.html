@@ -1,0 +1,2 @@
+<div class="user-offers"><h1 class="text-center">Sales from {{user.firstName + ' ' + user.lastName}}</h1><table class="table table-bordered ng-table table-container"><thead><tr><th>Title</th><th>Category</th><th>Description</th><th>Creation Date</th><th>Price</th></tr></thead><tbody><tr ng-repeat="sale in userSales"><td> <a>(href="#/offers/{{offer.id}}")
+{{offer.title}}</a></td><td>{{sale.category}}</td><td>{{sale.description}}</td><td>{{sale.creationDate | date: 'MMM d yyyy' }}</td><td>{{sale.price}}</td></tr></tbody></table></div>

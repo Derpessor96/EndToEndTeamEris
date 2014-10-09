@@ -46,6 +46,6 @@ div.all-offers
                         | {{offer.title}}
                 td {{offer.category}}
                 td {{offer.description}}
-                td {{offer.creationDate}}
+                td {{offer.creationDate | date: 'MMM d yyyy' }}
                 td {{offer.price}}
                 td {{offer.sold}}

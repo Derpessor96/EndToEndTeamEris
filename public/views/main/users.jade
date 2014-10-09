@@ -31,5 +31,5 @@ div.all-userss
                     a (href="#/users/{{user.id}}")
                         | {{user.username}}
                
-                td {{user.dateRegistered}}
+                td {{user.dateRegistered | date: 'MMM d yyyy' }}
                 td {{user.picture}}

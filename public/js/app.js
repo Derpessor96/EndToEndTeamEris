@@ -36,6 +36,14 @@ app.config( function ( $routeProvider, $locationProvider ) {
             templateUrl: 'views/main/userDetails.html',
             controller: 'MainCtrl'
         } )
+        .when( '/users/:id/sales', {
+            templateUrl: 'views/main/userSales.html',
+            controller: 'MainCtrl'
+        } )
+        .when( '/users/:id/offers', {
+            templateUrl: 'views/main/userOffers.html',
+            controller: 'MainCtrl'
+        } )
         .when( '/signup', {
             templateUrl: 'views/signup.html',
             controller: 'SignUpCtrl'

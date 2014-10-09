@@ -15,9 +15,9 @@ div.userDetails
 					span {{user.username}}
 				li
 					strong Date of registration: 
-					span {{user.dateRegistered}}
+					span {{user.dateRegistered | date: 'MMM d yyyy' }}
 	div.row
 		div.col-sm-3
-			a(href="/users/{{user.id}}/offers") Show all offers from {{user.username}}
+			a(href="/#users/{{user.id}}/offers") Show all offers from {{user.username}}
 		div.col-sm-3
-			a(href="/users/{{user.id}}/sales") Show all sales from {{user.username}}
+			a(href="/#users/{{user.id}}/sales") Show all sales from {{user.username}}
