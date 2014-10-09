@@ -40,16 +40,18 @@ module.exports = function(app) {
     /* Offer-related routes Start*/
 
     // Get all Offers
-    //app.get('/offer', function(req, res) {
-    //    res.render('index');
-    //});
+    app.get(apiPrefix + '/offers', controllers.offersController.getAllOffers);
 
     //Get all Offers sorted, paginated and filtered by userId
     //GET /api/user/:id/offers?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
-    app.get(apiPrefix + '/user/:id/offers', controllers.offersController.acceptOffer);
+    app.get(apiPrefix + '/user/:id/offers', controllers.offersController.getAllUserOffers);
 
     // Get Offer by id
-    app.get(apiPrefix + '/offer/:id', controllers.offersController.getOfferById);
+    app.get(apiPrefix + '/offers/:id', controllers.offersController.getOfferById);
+
+    // Accept offer and generate sale
+    // POST /api/offer/:id
+    app.post(apiPrefix + '/offers/:id', controllers.offersController.acceptOffer);
 
     // Get all Offers by USER ID
     //app.get('/offer/:userId', function(req, res) {
@@ -82,10 +84,14 @@ module.exports = function(app) {
     //});
 
     // Create new Offer
-    app.post(apiPrefix + '/offer', controllers.offersController.createOffer);
+    app.post(apiPrefix + '/offers', controllers.offersController.createOffer);
     /* Offer-related routes END*/
     /******************************/
     /* Offer-related routes Start*/
+
+    //Get all Sales sorted, paginated and filtered by userId
+    //GET /api/user/:id/sales?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
+    app.get(apiPrefix + '/user/:id/sales', controllers.salesController.getAllSales);
 
     app.get('/', function(req, res) {
         res.render('index');

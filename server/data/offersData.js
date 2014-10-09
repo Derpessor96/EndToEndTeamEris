@@ -7,14 +7,18 @@ module.exports = {
     createOffer: function (offerModel, callback) {
         categoriesData.findCategory(offerModel.category, function (err, res) {
             offerModel.category = res;
-            usersData.findUser(offerModel.seller, function (err, res) {
-                offerModel.seller = res;
+            console.log(res);
+            usersData.findById(offerModel.seller, function (err, user) {
+                offerModel.seller = user._id;
                 offerModel.creationDate = new Date();
                 offerModel.expirationDate = new Date().setDate(offerModel.creationDate.getDate() + offerDaysDuration);
                 offerModel.sold = false;
                 offers.create(offerModel, callback);
             });
         });
+    },
+    findOffer: function(id, callback){
+        offers.findOne({ '_id': id}).exec(callback);
     },
     getOffers: function (query, options, callback) {
         var page,
@@ -42,7 +46,7 @@ module.exports = {
                                 return x[options.sortBy] > y[options.sortBy] ? -1 : x[options.sortBy] < y[options.sortBy] ? 1 : 0;
                             }
                         });
-                        var paginated = sorted.slice(page * size, size);
+                        var paginated = sorted.slice(page * size, size + page * size);
                         if (callback) {
                             callback(err, paginated);
                         }

@@ -14,19 +14,40 @@ module.exports = {
 
         var result = [];
         // TODO: Research whether filter is for buyer, for seller or both, now is set for both
-        data.sales.getSales({ seller: req.params.id }, options, function (err, collection) {
+        data.sales.getAllSales({ sellerId: req.params.id }, options, function (err, collection) {
             if (err) {
                 res.status(400).send();
             } else {
-                result.push(collection);
-                data.sales.getSales({ buyer: req.params.id }, options, function(err, otherCollection){
+                for(var i = 0; i < collection.length; i++){
+                    result.push(collection[i]);
+                }
+                data.sales.getAllSales({ buyerId: req.params.id }, options, function(err, otherCollection){
                     if (err) {
                         res.status(400).send();
                     } else {
-                        result.push(otherCollection);
-                        res.send(result);
-                    }
-                });
+                        for(var i = 0; i < otherCollection.length; i++){
+                            result.push(otherCollection[i]);
+                        }
+
+                        if (options) {
+                            var page = options.page || 0;
+                            var size = options.size || 10;
+                            var sortBy = options.sortBy || '_id';
+                            var sortMethod = options.sortMethod || 'asc';
+
+                            var sorted = result.sort(function (x, y) {
+                                if (sortMethod == 'asc') {
+                                    return x[options.sortBy] > y[options.sortBy] ? 1 : x[options.sortBy] < y[options.sortBy] ? -1 : 0;
+                                } else if (sortMethod == 'desc') {
+                                    return x[options.sortBy] > y[options.sortBy] ? -1 : x[options.sortBy] < y[options.sortBy] ? 1 : 0;
+                                }
+                            });
+                            var paginated = sorted.slice(page * size, size + page * size);
+
+                            res.send(paginated);
+                            }
+                        }
+                    });
             }
         });
     }
