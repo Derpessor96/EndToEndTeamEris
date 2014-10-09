@@ -16,16 +16,16 @@ module.exports = function(app) {
     /* User-related routes START*/
 
     //Get all users
-    app.get(apiPrefix+'/user', controllers.usersController.getAllUsers);
+    app.get(apiPrefix+'/user', auth.isInRole('admin'), controllers.usersController.getAllUsers);
 
     // Get user by ID
-    app.get(apiPrefix+'/user/:id', controllers.usersController.getUserById);
+    app.get(apiPrefix+'/user/:id', auth.isAuthenticated, controllers.usersController.getUserById);
 
     // Register new user
     app.post(apiPrefix+'/user', controllers.usersController.registerUser);
 
     // Update existing new user
-    app.put(apiPrefix+'/user', controllers.usersController.updateUser);
+    app.put(apiPrefix+'/user', auth.isAuthenticated, controllers.usersController.updateUser);
 
     /*    User-related routes END   */
     /********************************/
@@ -39,7 +39,7 @@ module.exports = function(app) {
 
     // Create new Category
     // TODO : add autorization for this route
-    app.post(apiPrefix+'/category', controllers.categoriesController.createCategory);
+    app.post(apiPrefix+'/category', auth.isInRole('admin'), controllers.categoriesController.createCategory);
     /* Category-related routes END*/
     /******************************/
     /* Offer-related routes Start*/
@@ -49,24 +49,23 @@ module.exports = function(app) {
 
     //Get all Offers sorted, paginated and filtered by userId
     //GET /api/user/:id/offers?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
-    app.get(apiPrefix + '/user/:id/offers', controllers.offersController.getAllUserOffers);
+    app.get(apiPrefix + '/user/:id/offers', auth.isAuthenticated, controllers.offersController.getAllUserOffers);
 
     // Get Offer by id
-    app.get(apiPrefix + '/offers/:id', controllers.offersController.getOfferById);
+    app.get(apiPrefix + '/offers/:id', auth.isAuthenticated, controllers.offersController.getOfferById);
 
     // Accept offer and generate sale
     // POST /api/offer/:id
-    app.post(apiPrefix + '/offers/:id', controllers.offersController.acceptOffer);
+    app.post(apiPrefix + '/offers/:id', auth.isAuthenticated, controllers.offersController.acceptOffer);
 
     // Get all Offers by USER ID
     //app.get('/offer/:userId', function(req, res) {
     //    res.render('index');
     //});
 
-    // Get all Offers by Category ID
-    //app.get('/offer/:categoryId', function(req, res) {
-    //    res.render('index');
-    //});
+    // Get all Offers by Category Id sorted, paginated
+    //GET /api/category/:id/offers?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
+    app.get(apiPrefix + '/category/:id/offers', auth.isAuthenticated, controllers.offersController.getAllCategoryOffers);
 
     // Get latest Offers
     //app.get('/offer/latest', function(req, res) {
@@ -89,14 +88,14 @@ module.exports = function(app) {
     //});
 
     // Create new Offer
-    app.post(apiPrefix + '/offers', controllers.offersController.createOffer);
+    app.post(apiPrefix + '/offers', auth.isAuthenticated,  controllers.offersController.createOffer);
     /* Offer-related routes END*/
     /******************************/
     /* Offer-related routes Start*/
 
     //Get all Sales sorted, paginated and filtered by userId
     //GET /api/user/:id/sales?page=x&orderBy=(id, price, creationDate, title)&orderType=(asc, desc)
-    app.get(apiPrefix + '/user/:id/sales', controllers.salesController.getAllSales);
+    app.get(apiPrefix + '/user/:id/sales', auth.isAuthenticated, controllers.salesController.getAllSales);
 
     app.get('/', function(req, res) {
     	res.render('index', { currentUser: req.user });

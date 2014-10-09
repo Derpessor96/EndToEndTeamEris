@@ -30,6 +30,23 @@ module.exports = {
             }
         });
     },
+    getAllCategoryOffers: function(req, res, next) {
+        var options = {};
+        if(req.query) {
+            options.size = req.query.size || defaultPageSize;
+            options.page = req.query.page || 0;
+            options.sortBy = req.query.orderBy || '_id';
+            options.sortMethod = req.query.orderType || 'asc';
+        }
+
+        data.offers.getOffers({ category: req.params.id }, options, function(err, collection) {
+            if (err) {
+                res.status(400).send();
+            } else {
+                res.send(collection);
+            }
+        });
+    },
     // GET /api/offers/
     getAllOffers: function(req, res, next) {
         var options = {};
