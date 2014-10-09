@@ -2,11 +2,13 @@ div.all-userss
     h1.text-center Users
     div(ng-if="identity.isAuthenticated()")
         div.row
-            div.col-sm-3
-                p.text-center Quick search
+            div.col-sm-2
+                label.control-label Quick search
+            div.col-sm-4
                 input.form-control(type="text", ng-model="search")
-            div.col-sm-3
-                p.text-center Sort
+            div.col-sm-1
+                label.control-label Sort
+            div.col-sm-4
                 select.form-control(ng-model="request.orderBy")
                         option (value="" selected="selected") None
                         option (value="firstName") First Name

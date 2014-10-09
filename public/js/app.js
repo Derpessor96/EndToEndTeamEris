@@ -28,6 +28,10 @@ app.config( function ( $routeProvider, $locationProvider ) {
             templateUrl: 'views/main/users.html',
             controller: 'MainCtrl'
         } )
+        .when( '/users/:id', {
+            templateUrl: 'views/main/userDetails.html',
+            controller: 'MainCtrl'
+        } )
         .when( '/signup', {
             templateUrl: 'views/signup.html',
             controller: 'SignUpCtrl'

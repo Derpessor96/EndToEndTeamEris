@@ -5,11 +5,8 @@
         .col-md-7
             h2 All offers in one place
     .row
-        .col-md-3
+        .col-md-10.col-md-offset-1
             .panel.panel-info
-                .panel-heading.text-center Categories
-                .panel-body(ng-include="'/partials/main/categories'")
-        .col-md-9
-            .panel.panel-info
-                .panel-heading.text-center New Offers
-                .panel-body(ng-include="'/partials/main/new-offers'")
+                .panel-heading.text-center Latest Offers
+                .panel-body
+                    include new-offers
