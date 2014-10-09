@@ -1,0 +1,52 @@
+div.row
+    div.col-sm-10.col-sm-offset-1
+        h1.text-center Offers from category {{category.title}}
+        div.filter-control(ng-if="identity.isAuthenticated()")
+            div.row
+                div.col-sm-2
+                    label.control-label Quick search
+                div.col-sm-2
+                    input.form-control(type="text", ng-model="search")
+                div.col-sm-1
+                    label.control-label Sort
+                div.col-sm-3
+                    select.form-control(ng-model="request.orderBy")
+                            option (value="" selected="selected") None
+                            option (value="title") Title
+                            option (value="creationDate") Creation Date
+                            option (value="seller") Seller               
+            div.row.filter-control
+                div.col-sm-1
+                    label.control-label Active
+                div.col-sm-1
+                    input(type="checkbox" ng-model="request.sold") 
+                div.col-sm-2
+                    label.control-label Only with picture
+                div.col-sm-1
+                    input(type="checkbox" ng-model="request.picture")
+                div.col-sm-3
+                    div.col-sm-3
+                        button.btn.btn-primary( ng-click="previousPage()", ng-disabled="request.page == 1") &lt;&lt;
+                    div.col-sm-5
+                        input.form-control(type="text", ng-model="request.page" value="1")
+                    div.col-sm-3
+                        button.btn.btn-primary( ng-click="nextPage()") &gt;&gt;
+                div.col-sm-1.col-sm-offset-3
+                    button.pull-right.btn.btn-primary( ng-click="filter(request)") Filter            
+        table.table.table-bordered.ng-table.table-container
+            thead
+                tr
+                    th Title
+                    th Description
+                    th Creation Date
+                    th Price
+                    th Available
+            tbody
+                tr( ng-repeat="offer in allOffers | filter:search")
+                    td 
+                        a (href="#/offers/{{offer.id}}")
+                            | {{offer.title}}
+                    td {{offer.description}}
+                    td {{offer.creationDate | date: 'MMM d yyyy' }}
+                    td {{offer.price}}
+                    td {{offer.sold}}
