@@ -17,8 +17,7 @@ app.config(function ($routeProvider, $locationProvider) {
 
 	$routeProvider
         .when('/', {
-        	templateUrl: 'partials/main/home',
-        	controller: 'MainCtrl'
+        	templateUrl: 'partials/main/home'
         })
         .when('/users', {
         	templateUrl: 'partials/users/users',
@@ -36,16 +35,16 @@ app.config(function ($routeProvider, $locationProvider) {
         	templateUrl: 'partials/users/userSales',
         	controller: 'MainCtrl'
         })
+        .when('/offers/create', {
+            templateUrl: 'partials/offers/createOffer',
+            controller: 'offersCtrl',
+            resolve: routeUserChecks.authenticated
+        })
         .when('/offers', {
-        	templateUrl: 'partials/offers/offers',
-        	controller: 'MainCtrl'
+        	templateUrl: 'partials/offers/offers'
         })
         .when('/offers/:id', {
         	templateUrl: 'partials/offers/offerDetails',
-        	controller: 'MainCtrl'
-        })
-        .when('/offers/create', {
-        	templateUrl: 'partials/offers/createOffer',
         	controller: 'MainCtrl'
         })
         .when('/signup', {
