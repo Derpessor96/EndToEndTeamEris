@@ -1,10 +1,30 @@
 div.all-offers
     h1.text-center Offers
     div(ng-if="identity.isAuthenticated()")
-        div.col-sm-4
-            .input.form-control(type="text", ng-model="search")
-        div.col-sm-2
-            button.btn.btn-default Filter
+        div.row
+            div.col-sm-3
+                p.text-center Quick search
+                input.form-control(type="text", ng-model="search")
+            div.col-sm-3
+                p.text-center Sort
+                select.form-control(ng-model="request.orderBy")
+                        option (value="" selected="selected") None
+                        option (value="title") Title
+                        option (value="creationDate") Creation Date
+                        option (value="category") Category
+                        option (value="seller") Seller
+            div.col-sm-3
+                p.text-center Category
+                select.form-control(ng-model="request.category")
+        div.row
+            div.col-sm-2
+                label.col-sm-2.control-label Active
+                input(type="checkbox" ng-model="request.sold") 
+                br
+                label.col-sm-2.control-label  Only with picture
+                input(type="checkbox" ng-model="request.picture")
+            div.col-sm-2
+                button.btn.btn-default( ng-click="filter(request)") Filter            
     table.table.table-bordered.ng-table.table-container
         thead
             tr

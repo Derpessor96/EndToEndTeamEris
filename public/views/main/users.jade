@@ -1,0 +1,33 @@
+div.all-userss
+    h1.text-center Users
+    div(ng-if="identity.isAuthenticated()")
+        div.row
+            div.col-sm-3
+                p.text-center Quick search
+                input.form-control(type="text", ng-model="search")
+            div.col-sm-3
+                p.text-center Sort
+                select.form-control(ng-model="request.orderBy")
+                        option (value="" selected="selected") None
+                        option (value="firstName") First Name
+                        option (value="lastName") Last Name
+                        option (value="username") Username
+                        option (value="dateRegistered") Date of registration   
+    table.table.table-bordered.ng-table.table-container
+        thead
+            tr
+                th First Name
+                th Last Name
+                th Username
+                th Date of registration
+                th Picture
+        tbody
+            tr( ng-repeat="user in users | filter:search")
+                td {{user.firstName}}
+                td {{user.lastName}}
+                td 
+                    a (href="#/users/{{user.id}}")
+                        | {{user.username}}
+               
+                td {{user.dateRegistered}}
+                td {{user.picture}}
