@@ -1,4 +1,5 @@
 var auth = require('./auth'),
+    path = require('path'),
     controllers = require('../controllers');
 
 module.exports = function(app) {
@@ -9,8 +10,7 @@ module.exports = function(app) {
     app.post('/logout', auth.logout);
 
     app.get('/partials/:partialArea/:partialName', function(req, res) {
-        console.log('../../public/app/views/' + req.params.partialArea + '/' + req.params.partialName)
-        res.render('../../public/app/views/' + req.params.partialArea + '/' + req.params.partialName)
+        res.render(path.normalize(path.join('../../public/views/',req.params.partialArea,'/' + req.params.partialName)));
     });
 
     /* User-related routes START*/

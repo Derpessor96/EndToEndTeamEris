@@ -10,7 +10,7 @@ module.exports = function(app, config) {
    //    users = require('./routes/user');
 
     app.set('view engine', 'jade');
-    app.set('views', config.rootPath + '/server/views');
+    app.set('views', path.join(config.rootPath,'/server/views'));
 
     app.use(favicon(config.rootPath + '/public/img/favicon.ico'));
 
