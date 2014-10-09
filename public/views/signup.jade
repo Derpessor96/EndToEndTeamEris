@@ -3,7 +3,7 @@
         form.form-horizontal(name="signUpForm")
             fieldset(ng-controller="SignUpCtrl")
                 legend Create New User
-                .form-group
+               .form-group
                     label.col-md-2.control-label(for="first-name") First Name
                     .col-md-10
                         input.form-control(type="text", placeholder="First Name", ng-model="user.firstName", required)
@@ -19,6 +19,14 @@
                     label.col-md-2.control-label(for="password") Password
                     .col-md-10
                         input.form-control(type="password", placeholder="Password", ng-model="user.password", required)
+                .form-group
+                    label.col-md-2.control-label(for="cnfmPassword") Confirm Password
+                    .col-md-10
+                        input.form-control(type="password", placeholder="Confirm Password", ng-model="user.cnfmPassword", required)
+                .form-group
+                    label.col-md-2.control-label(for="file") Profile Picture
+                    .col-md-10
+                        input(type="file", ng-model="user.picture")           
                 .pull-right
                     button.btn.btn-primary(ng-click="signup(user)", ng-disabled="signUpForm.$invalid") Create
                     a.btn.btn-primary(href="#/") Cancel

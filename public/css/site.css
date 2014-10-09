@@ -1,20 +1,35 @@
 body {
-    padding-top: 80px;
+	padding-top: 80px;
+}
+.jumbotron{
+	padding-bottom: 80px;
+	padding-top: 20px;
+}
+.navbar-inverse{
+	background-color: #185899;
+	color: #ddd;
+}
+
+.navbar-inverse .navbar-brand{
+	color: #ddd;
+}
+.navbar-inverse .navbar-nav > li > a {
+	color: #ddd;
 }
 .navbar-right .navbar-form input {
-    margin-right: 10px;
+	margin-right: 10px;
 }
 .navbar-right .navbar-form a.btn {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 .toast-top-right {
-    top: 70px;
+	top: 70px;
 }
 footer {
-    padding-left: 120px;
-    padding-right: 120px;
+	padding-left: 120px;
+	padding-right: 120px;
 }
 footer p {
-    border-top: 1px solid #808080;
-    padding-top: 10px;
+	border-top: 1px solid #808080;
+	padding-top: 10px;
 }
