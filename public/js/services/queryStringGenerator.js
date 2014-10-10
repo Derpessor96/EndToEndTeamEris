@@ -1,7 +1,7 @@
 ﻿app.factory('queryStringGenerator', function ($http, $q, identity) {
 	return {
 		getQueryString: function (page, orderBy, orderType) {
-			var result = '/';
+			var result = '';
 
 			if (page) {
 				if (result.indexOf('?') === -1) {
@@ -27,7 +27,7 @@
 				result += '&orderType=' + orderType;
 			}
 
-            return result;
+			return result;
 		}
 	}
 });

@@ -15,7 +15,7 @@
 		getUserDetails: function (userId) {
 			var deferred = $q.defer();
 
-			$http.get('/api/user' + userId)
+			$http.get('/api/user/' + userId)
                 .success(function (data) {
                 	deferred.resolve(data);
                 }, function (response) {

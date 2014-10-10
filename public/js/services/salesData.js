@@ -1,4 +1,4 @@
-﻿app.factory('categoriesData', function ($http, $q, identity, queryStringGenerator) {
+﻿app.factory('salesData', function ($http, $q, identity, queryStringGenerator) {
 	return {
 		getUserSales: function (userId, page, orderBy, orderType) {
 			var deferred = $q.defer();

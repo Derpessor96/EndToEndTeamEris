@@ -17,6 +17,6 @@
                 li(ng-show="identity.currentUser.isAdmin()")
                     a(href="#/admin/offers-management") Offers Management
                 li(ng-show="identity.isAuthenticated()")
-                    a(href="#/profile") Profile
+                    a(href="" ng-href="#/users/{{identity.currentUser._id}}") Profile
                 li
                     a(href="#" ng-click="logout()") Sign Out
