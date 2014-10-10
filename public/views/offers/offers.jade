@@ -1,9 +1,8 @@
 div.row
     div.col-sm-10.col-sm-offset-1
         h1.text-center Offers
-        a(href="#/offers/create")
+        a.btn.btn-primary(href="#/offers/create")
             |Create Offer
-        div.filter-control(ng-if="identity.isAuthenticated()")
             div.row
                 div.col-sm-2
                     label.control-label Quick search
@@ -50,9 +49,9 @@ div.row
                     th Price
                     th Available
             tbody
-                tr( ng-repeat="offer in allOffers | filter:search")
+                tr(ng-controller="offersCtrl" ng-repeat="offer in allOffers | filter:search")
                     td 
-                        a (href="#/offers/{{offer.id}}")
+                        a(href="#/offers/{{offer.id}}")
                             | {{offer.title}}
                     td {{offer.category}}
                     td {{offer.description}}

@@ -41,7 +41,8 @@ app.config(function ($routeProvider, $locationProvider) {
             resolve: routeUserChecks.authenticated
         })
         .when('/offers', {
-        	templateUrl: 'partials/offers/offers'
+        	templateUrl: 'partials/offers/offers',
+            controller: 'offersCtrl'
         })
         .when('/offers/:id', {
         	templateUrl: 'partials/offers/offerDetails',

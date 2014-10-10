@@ -59,5 +59,5 @@ module.exports = {
         else {
             res.send({reason: 'You do not have permissions!'})
         }
-    },
+    }
 };
