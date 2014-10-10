@@ -3,24 +3,25 @@ div.row
         h1.text-center Offers
         a.btn.btn-primary(href="#/offers/create")
             |Create Offer
-            div.row
-                div.col-sm-2
-                    label.control-label Quick search
-                div.col-sm-2
-                    input.form-control(type="text", ng-model="search")
-                div.col-sm-1
-                    label.control-label Sort
-                div.col-sm-3
-                    select.form-control(ng-model="request.orderBy")
-                        option (value="" selected="selected") None
-                        option (value="title") Title
-                        option (value="creationDate") Creation Date
-                        option (value="category") Category
-                        option (value="seller") Seller
-                div.col-sm-1
-                    label.control-label Category
-                div.col-sm-3
-                    select.form-control(ng-model="request.category")
+        br
+        div.row
+            div.col-sm-2
+                label.control-label Quick search
+            div.col-sm-2
+                input.form-control(type="text", ng-model="search")
+            div.col-sm-1
+                label.control-label Sort
+            div.col-sm-3
+                select.form-control(ng-model="request.orderBy")
+                    option (value="" selected="selected") None
+                    option (value="title") Title
+                    option (value="creationDate") Creation Date
+                    option (value="category") Category
+                    option (value="seller") Seller
+            div.col-sm-1
+                label.control-label Category
+            div.col-sm-3
+                select.form-control(ng-model="request.category")
             div.row.filter-control
                 div.col-sm-1
                     label.control-label Active
