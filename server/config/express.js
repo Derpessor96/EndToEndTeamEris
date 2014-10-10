@@ -8,7 +8,6 @@ var express = require('express'),
 	session = require('express-session');
 
 module.exports = function(app, config) {
-   //    users = require('./routes/user');
 
     app.set('view engine', 'jade');
     app.set('views', path.join(config.rootPath,'/server/views'));
@@ -24,14 +23,11 @@ module.exports = function(app, config) {
 
     app.use(logger('dev'));
 
-    app.use(session({secret: 't3@mEr1s'}));
-
+    app.use(session({resave: true, saveUninitialized: true, secret: 'vaxklowxkwjs'}));
     app.use(passport.initialize());
     app.use(passport.session());
 
     app.use(express.static(config.rootPath + '/public'));
-    //app.use('/', routes);
-    //app.use('/users', users);
 };
 
 
