@@ -9,9 +9,9 @@ table.table.table-bordered.ng-table.table-container
 	tbody
 		tr( ng-repeat="offer in offers")
 			td 
-				a (href="#/offers/{{offer.id}}")
+				a(hrer="" ng-href="#/offers/{{offer._id}}")
 					| {{offer.title}}
-			td {{offer.category}}
+			td {{categories[offer.category]}}
 			td {{offer.description}}
 			td {{offer.creationDate  | date: 'MMM d yyyy' }}
 			td {{offer.price}}

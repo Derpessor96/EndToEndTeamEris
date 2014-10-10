@@ -1,12 +1,20 @@
 'use strict';
 
-app.controller('HomeController', ['$scope', 'offersData',
-    function ($scope, offersData) {
-    	console.log(offersData);
-    	offersData.getAllOffers(0, '', 'desc')
+app.controller('HomeController', ['$scope', 'offersData', 'categoriesData',
+    function ($scope, offersData, categoriesData) {
+    	$scope.categories = [];
+
+    	categoriesData.getAllCategories()
 			.then(function success(data) {
-				$scope.offers = data;
-				console.log('a');
-			});
+				for (var i = 0; i < data.length; ++i) {
+					$scope.categories[data[i]._id] = data[i].name;
+				}
+			})
+		.then(function () {
+			offersData.getAllOffers(0, '', 'desc')
+				.then(function success(data) {
+					$scope.offers = data;
+				});
+		});
     }
 ]);

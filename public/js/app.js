@@ -22,19 +22,21 @@ app.config(function ($routeProvider, $locationProvider) {
         })
         .when('/users', {
         	templateUrl: 'partials/users/users',
-        	controller: 'MainCtrl'
+        	controller: 'UsersController'
         })
         .when('/users/:id', {
         	templateUrl: 'partials/users/userDetails',
-        	controller: 'MainCtrl'
+        	controller: 'UserDetailsController',
+        	resolve: routeUserChecks.authenticated
         })
         .when('/users/:id/offers', {
         	templateUrl: 'partials/users/userOffers',
-        	controller: 'MainCtrl'
+        	controller: 'UserOffersController',
+        	resolve: routeUserChecks.authenticated
         })
         .when('/users/:id/sales', {
         	templateUrl: 'partials/users/userSales',
-        	controller: 'MainCtrl'
+        	controller: 'SalesController'
         })
         .when('/offers', {
         	templateUrl: 'partials/offers/offers',
@@ -53,12 +55,8 @@ app.config(function ($routeProvider, $locationProvider) {
         	controller: 'SignUpCtrl'
         })
         .when('/categories/:id/offers', {
-        	templateUrl: '', // TODO: add partial
-        	controller: 'SignUpCtrl'
-        })
-        .when('/categories', {
-        	templateUrl: '', // TODO: add partial
-        	controller: 'SignUpCtrl'
+        	templateUrl: 'partials/offers/categories',
+        	controller: 'CategoriesController'
         })
         .otherwise({
         	redirectTo: '/'

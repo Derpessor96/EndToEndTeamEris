@@ -1,5 +1,5 @@
-div.user-offers
-    h1.text-center Offers from {{user.firstName + ' ' + user.lastName}}
+﻿div.user-offers
+    h1.text-center Sales from {{user.firstName + ' ' + user.lastName}}
     div.filter-control
         div.row
             div.col-sm-1
@@ -25,7 +25,7 @@ div.user-offers
                 div.col-sm-3
                     button.btn.btn-primary(ng-click="nextPage()") &gt;&gt;
             div.col-sm-1.col-sm-offset-3
-                button.pull-right.btn.btn-primary(ng-click="refreshOffers()") Filter            
+                button.pull-right.btn.btn-primary(ng-click="refreshSales()") Filter            
     table.table.table-bordered.ng-table.table-container
         thead
             tr
@@ -35,11 +35,9 @@ div.user-offers
                 th Creation Date
                 th Price
         tbody
-            tr(ng-repeat="offer in userOffers")
-                td 
-                    a(href="" ng-href="#/offers/{{offer._id}}")
-                        | {{offer.title}}
-                td {{categories[offer.category]}}
-                td {{offer.description}}
-                td {{offer.creationDate | date: 'MMM d yyyy' }}
-                td {{offer.price}}
+            tr(ng-repeat="sale in userSales")
+                td {{sale.title}}
+                td {{categories[sale.category]}}
+                td {{sale.description}}
+                td {{sale.creationDate | date: 'MMM d yyyy' }}
+                td {{sale.price}}
