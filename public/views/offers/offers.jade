@@ -12,11 +12,11 @@ div.row
                     label.control-label Sort
                 div.col-sm-3
                     select.form-control(ng-model="request.orderBy")
-                            option (value="" selected="selected") None
-                            option (value="title") Title
-                            option (value="creationDate") Creation Date
-                            option (value="category") Category
-                            option (value="seller") Seller
+                        option (value="" selected="selected") None
+                        option (value="title") Title
+                        option (value="creationDate") Creation Date
+                        option (value="category") Category
+                        option (value="seller") Seller
                 div.col-sm-1
                     label.control-label Category
                 div.col-sm-3
@@ -25,7 +25,7 @@ div.row
                 div.col-sm-1
                     label.control-label Active
                 div.col-sm-1
-                    input(type="checkbox" ng-model="request.sold") 
+                    input(type="checkbox" ng-model="request.sold")
                 div.col-sm-2
                     label.control-label Only with picture
                 div.col-sm-1
@@ -50,7 +50,7 @@ div.row
                     th Available
             tbody
                 tr(ng-controller="offersCtrl" ng-repeat="offer in allOffers | filter:search")
-                    td 
+                    td
                         a(href="#/offers/{{offer.id}}")
                             | {{offer.title}}
                     td {{offer.category}}
