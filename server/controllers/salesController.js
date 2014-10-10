@@ -13,7 +13,6 @@ module.exports = {
         }
 
         var result = [];
-        // TODO: Research whether filter is for buyer, for seller or both, now is set for both
         data.sales.getAllSales({ sellerId: req.params.id }, function (err, collection) {
             if (err) {
                 res.status(400).send();
