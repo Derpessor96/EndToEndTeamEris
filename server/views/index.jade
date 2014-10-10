@@ -13,21 +13,12 @@ block main-content
                     li
                         a(href="#/users") Users
                 div(ng-include="'partials/main/login'")
-    .jumbotron
-        .col-md-4
-            img(src= "../../img/kupime_logo.png")
-        .col-md-4
-            h2 All offers in one place
-        .col-md-3
-            .col-sm-9
-                input.form-control.input-medium.search-query(type="text")
-            .col-sm-3
-                button.btn.btn-primary(type="submit") Search
     form.container.form-search(ng-controller="categoriesController")
         .form-group.filter-control
             .col-md-2.col-md-offset-1
                 label.col-md-2.control-label(for="categories")
                 | Category:
+            input(type="text")
             .col-md-3
                 select.form-control(categories, id="categories",required="required",ng-model="query.category" )
             .col-md-1
@@ -37,3 +28,15 @@ block main-content
     footer
         p.text-center
             | &copy; Team Eris
+
+
+            // .jumbotron
+            //     .col-md-4
+            //         img(src= "../../img/kupime_logo.png")
+            //     .col-md-4
+            //         h2 All offers in one place
+            //     .col-md-3
+            //         .col-sm-9
+            //             input.form-control.input-medium.search-query(type="text")
+            //         .col-sm-3
+            //             button.btn.btn-primary(type="submit") Search
